@@ -8,10 +8,10 @@
             <InsightsFilterSettings>
               <option name="connection">
                 <ConnectionSetting>
-                  <option name="appId" value="PLACEHOLDER" />
-                  <option name="mobileSdkAppId" value="" />
-                  <option name="projectId" value="" />
-                  <option name="projectNumber" value="" />
+                  <option name="appId" value="com.example.threadclone" />
+                  <option name="mobileSdkAppId" value="1:90146708690:android:0a003eda61499089cbe10b" />
+                  <option name="projectId" value="threads-cfeda" />
+                  <option name="projectNumber" value="90146708690" />
                 </ConnectionSetting>
               </option>
               <option name="signal" value="SIGNAL_UNSPECIFIED" />
