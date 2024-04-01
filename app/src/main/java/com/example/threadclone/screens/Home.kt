@@ -22,6 +22,9 @@ import com.example.threadclone.roomdb.Databse
 import com.example.threadclone.roomdb.MemberStatusEntity
 import com.example.threadclone.viewmodel.HomeViewModel
 import com.google.firebase.auth.FirebaseAuth
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 import java.util.UUID
 import kotlin.time.Duration.Companion.seconds
 
@@ -29,34 +32,35 @@ import kotlin.time.Duration.Companion.seconds
 fun Home(navHostController: NavHostController){
     val context= LocalContext.current
     val dao: Dao = Databse.getDatabaseInstance(context).getDao()
+    val currentDate = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(Date())
 
     val dummyMemberStatus1 = MemberStatusEntity(
-        checkInTime = "21:00:00", // Insert your desired check-in time here
+        checkInTime = "13:00:00 $currentDate", // Insert your desired check-in time here
         checkOutTime = "14:00:00", // Insert your desired check-out time here
         status = "Present" // Insert your desired status here
     )
     val dummyMemberStatus2 = MemberStatusEntity(
-        checkInTime = "22:00:00", // Insert your desired check-in time here
+        checkInTime = "13:00:00 $currentDate", // Insert your desired check-in time here
         checkOutTime = "2024-03-31 14:00:00", // Insert your desired check-out time here
         status = "Present" // Insert your desired status here
     )
 
     val dummyMemberStatus3 = MemberStatusEntity(
-        checkInTime = "23:00:00", // Insert your desired check-in time here
+        checkInTime = "14:00:00 $currentDate", // Insert your desired check-in time here
         checkOutTime = "10:00:00", // Insert your desired check-out time here
         status = "Present" // Insert your desired status here
     )
     val dummyMemberStatus4 = MemberStatusEntity(
-        checkInTime = "24:00:00", // Insert your desired check-in time here
+        checkInTime = "22:00:00 $currentDate", // Insert your desired check-in time here
         checkOutTime = "14:00:00", // Insert your desired check-out time here
         status = "Present" // Insert your desired status here
     )
-//    LaunchedEffect(Unit) {
-//        dao.insertMemberStatus(dummyMemberStatus1)
-//        dao.insertMemberStatus(dummyMemberStatus2)
-//        dao.insertMemberStatus(dummyMemberStatus3)
-//        dao.insertMemberStatus(dummyMemberStatus4)
-//    }
+    LaunchedEffect(Unit) {
+        dao.insertMemberStatus(dummyMemberStatus1)
+        dao.insertMemberStatus(dummyMemberStatus2)
+        dao.insertMemberStatus(dummyMemberStatus3)
+        dao.insertMemberStatus(dummyMemberStatus4)
+    }
     val homeViewModel:HomeViewModel= viewModel()
     val threadAndUser by homeViewModel.threadsAndUsers.observeAsState()
     LazyColumn {
